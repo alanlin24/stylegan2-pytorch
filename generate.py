@@ -18,7 +18,8 @@ def generate(args, g_ema, device, mean_latent):
             )
 
             utils.save_image(
-                sample,
+                sample = (sample + 1) / 2
+                sample = Resize(64)(sample)
                 f"sample/{str(i).zfill(6)}.png",
                 nrow=1,
                 normalize=True,
