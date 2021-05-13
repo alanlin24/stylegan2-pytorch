@@ -16,10 +16,10 @@ def generate(args, g_ema, device, mean_latent):
             sample, _ = g_ema(
                 [sample_z], truncation=args.truncation, truncation_latent=mean_latent
             )
-
+            sample = (sample + 1) / 2
+            sample = Resize(64)(sample)
             utils.save_image(
-                sample = (sample + 1) / 2,
-                sample = Resize(64)(sample),
+                sample,
                 f"sample/{str(i).zfill(6)}.png",
                 nrow=1,
                 normalize=True,
