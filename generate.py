@@ -4,7 +4,8 @@ import torch
 from torchvision import utils
 from model import Generator
 from tqdm import tqdm
-
+import torchvision
+from torchvision.transforms import Resize
 
 def generate(args, g_ema, device, mean_latent):
 
